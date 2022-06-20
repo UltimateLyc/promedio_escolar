@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sistema Escolar</title>
+    <script defer src="js/apps.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de automatizado de promedios</h1>
+
+        <section id="section_container">
+            <label for="cantidadAlumnos">Cantidad de Alumnos:</label>
+            <input type="number" id="cantidadAlumnos">
+            <br>
+            <label for="notasPorAlumno">Cantidad de notas por alumnos:</label>
+            <input type="number" id="notasPorAlumno">
+            <br>
+            <button id="btn_getPlantilla" onclick="getPlantilla()">Generar Plantilla</button>
+        </section>
+    </header>
+
+    <br>
+
+    <main id="main_container" class="invisible">
+        <table id="tablaAlamunos">
+            <thead >
+                <tr id="columns">
+                    <th id="order">Orden</th>
+                    <th id="student">Estudiante</th>
+                    <th id="average">Promedio</th>
+                </tr>
+            </thead>
+
+            <tbody id="rows">
+            </tbody>
+        </table>
+
+        <br>
+
+        <button id="btn_getTotalAverage" onclick="getTotalAverage()">Promedio General</button>
+
+    </main>
+
+    <footer id="footer_container" class="visible">
+        <br>
+        
+        <h4 id="generalAverage">Promedio general:</h4>
+    </footer>
+    
+</body>
+</html>
