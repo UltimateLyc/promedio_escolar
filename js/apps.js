@@ -67,6 +67,9 @@ function createRows()
     {
         
         alumnosPadre = document.createElement('tr'); 
+        let idContainerTR = document.createAttribute('id');
+        idContainerTR.value = `columns${i}`;
+        alumnosPadre.setAttributeNode(idContainerTR);
         rows.appendChild(alumnosPadre);
         /* Creamos la etiqueta dentro de:
         <tbody>
@@ -126,11 +129,11 @@ function createRows()
                 inputElement = document.createElement('input');
                 
                 typeText = document.createAttribute('type')
-                typeText.value = `number`;
+                typeText.value =`number` /* `number` */;
                 inputElement.setAttributeNode(typeText);
 
                 idInput = document.createAttribute('class');
-                idInput.value = `input${j-2}`;
+                idInput.value = `input${j-2}${i}`; // se crea la clase de esta manera para que cada valor pueda ser identificado como unico y al leerlo podelor sumarlo como un array [][] de dos posiciones
                 inputElement.setAttributeNode (idInput);
 
                 alumnosHijo.appendChild(inputElement);
@@ -156,3 +159,38 @@ function student()
 
     alumnosHijo.appendChild(inputStudent);
 }
+
+
+
+function getTotalAverage()
+{
+    let contenedorNotas;
+    let auxiliar = 0;
+    let escribirPromedio;
+
+    let test = 0;
+    let test2;
+    
+
+    for (let i = 1; i <= getCantidadAlumnos; i++) 
+    {
+        auxiliar=0;
+        for (let j = 1; j <= getNotasPorAlumno; j++) 
+        {
+            contenedorNotas = Number(document.querySelector(`.input${j}${i}`).value)
+            auxiliar += contenedorNotas;
+        }
+
+        escribirPromedio = document.getElementById(`promedio${i}`).innerHTML = auxiliar/getNotasPorAlumno;
+        
+        test += escribirPromedio;
+        
+        escribirPromedio = 0;
+        
+    }
+    //alert(test);
+    //alert(test/getCantidadAlumnos)
+    test2 = document.getElementById('generalAverage').innerHTML = `Promedio general: ${test/getCantidadAlumnos}`;
+
+}
+
